@@ -14,33 +14,40 @@ APP_ID = os.getenv("APP_ID")
 APP_SECRET = os.getenv("APP_SECRET")
 CHAT_ID = os.getenv("CHAT_ID")
 
-# ========== 飞书多维表格配置 ==========
-BITABLE_APP_TOKEN = os.getenv("BITABLE_APP_TOKEN")
-BITABLE_TABLE_ID = os.getenv("BITABLE_TABLE_ID")
-BITABLE_EMAIL_COL = os.getenv("BITABLE_EMAIL_COL")
+# ========== 飞书多维表格配置（收件人 → 项目映射） ==========
+BITABLE_APP_TOKEN  = os.getenv("BITABLE_APP_TOKEN")
+BITABLE_TABLE_ID   = os.getenv("BITABLE_TABLE_ID")
+BITABLE_EMAIL_COL  = os.getenv("BITABLE_EMAIL_COL")
 BITABLE_PROJECT_COL = os.getenv("BITABLE_PROJECT_COL")
-BITABLE_VPS_COL = os.getenv("BITABLE_VPS_COL")
+BITABLE_VPS_COL    = os.getenv("BITABLE_VPS_COL")
+
+# ========== 包名匹配表格配置 ==========
+BITABLE_PKG_APP_TOKEN = "WJlfbzhcHatoWWs2bO1cctoKnQc"
+BITABLE_PKG_TABLE_ID  = "tblgIfOupxB4TrCP"
+BITABLE_PKG_COL       = "包名"
+
+# ========== Gemini 配置 ==========
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # ========== 业务逻辑配置 ==========
-CHECK_INTERVAL = 60
-BITABLE_CACHE_DURATION = 1800
-BACKEND_URL = os.getenv("BACKEND_URL") # 预设后台接口
+CHECK_INTERVAL        = 60    # 邮件检查间隔（秒）
+BITABLE_CACHE_DURATION = 1800  # 多维表格缓存时间（秒）
 
-# 监控设置
+# ========== 监控设置 ==========
 SEARCH_FOLDERS = ["apple", "google"]
 TARGET_SENDERS = {
-    "apple": ["no_reply@email.apple.com"],
+    "apple":  ["no_reply@email.apple.com"],
     "google": ["no-reply-googleplay-developer@google.com"],
 }
 
-# 关键词规则
+# ========== 关键词规则 ==========
 KEYWORD_RULES = [
-    ("There's an issue with your", ("苹果应用拒审", "orange")),
-    ("Welcome to the App Store", ("苹果应用首次上线", "green")),          
-    ("submission is complete.", ("苹果应用审核通过", "blue")),          
-    ("You have a message from App Review about ", ("苹果审核回复", "orange")),               
-    ("IARC Live Rating Notice:", ("谷歌应用首次上线", "green")),
-    ("Notification from Google Play about ", ("谷歌开发者通知", "red")),
+    ("There's an issue with your",                                           ("苹果应用拒审",              "orange")),
+    ("Welcome to the App Store",                                             ("苹果应用首次上线",           "green")),
+    ("submission is complete.",                                              ("苹果应用审核通过",           "blue")),
+    ("You have a message from App Review about ",                            ("苹果审核回复",              "orange")),
+    ("IARC Live Rating Notice:",                                             ("谷歌应用首次上线",           "green")),
+    ("Notification from Google Play about ",                                 ("谷歌开发者通知",             "red")),
     ("Action Required: Your app is not compliant with Google Play Policies", ("需要采取措施：应用不符合政策", "yellow")),
-    ("建议采取行动", ("需要采取措施：应用不符合政策", "yellow")),
+    ("建议采取行动",                                                           ("需要采取措施：应用不符合政策", "yellow")),
 ]

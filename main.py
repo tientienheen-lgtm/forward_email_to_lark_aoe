@@ -11,7 +11,7 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s: %(message)s',
     handlers=[
         logging.StreamHandler(),
-        logging.FileHandler("email_monitor.log", encoding='utf-8') # 确保日志写入文件
+        logging.FileHandler("email_monitor.log", encoding='utf-8')
     ]
 )
 
@@ -27,4 +27,4 @@ def main():
         time.sleep(CHECK_INTERVAL)
 
 if __name__ == "__main__":
-    main()  
+    main()
