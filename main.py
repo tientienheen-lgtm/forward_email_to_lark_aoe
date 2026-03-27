@@ -1,3 +1,4 @@
+      
 """主程序（7*24运行+异常自动告警）"""
 import time
 import logging
@@ -11,7 +12,7 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s: %(message)s',
     handlers=[
         logging.StreamHandler(),
-        logging.FileHandler("email_monitor.log", encoding='utf-8')
+        logging.FileHandler("email_monitor.log", encoding='utf-8') # 确保日志写入文件
     ]
 )
 
@@ -27,4 +28,6 @@ def main():
         time.sleep(CHECK_INTERVAL)
 
 if __name__ == "__main__":
-    main()
+    main()  
+
+    
