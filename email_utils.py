@@ -1,4 +1,3 @@
-      
 # -*- coding: utf-8 -*-
 import imaplib, email, logging, pytz, re, json, anthropic
 from datetime import datetime, timedelta
@@ -96,6 +95,4 @@ def check_unread_emails():
     finally:
         try: conn.logout()
         except: pass
-        logging.info("✅ 本轮检查完成")
-
-    
+        # 删除"本轮检查完成"日志

@@ -10,6 +10,7 @@ EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 APP_ID = os.getenv("APP_ID")
 APP_SECRET = os.getenv("APP_SECRET")
 CHAT_ID = os.getenv("CHAT_ID")
+CHAT_ID_2 = os.getenv("CHAT_ID_2")  # 新增
 
 BITABLE_APP_TOKEN = os.getenv("BITABLE_APP_TOKEN")
 BITABLE_TABLE_ID = os.getenv("BITABLE_TABLE_ID")

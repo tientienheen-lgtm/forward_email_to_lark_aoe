@@ -11,7 +11,6 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s: %(message)s',
     handlers=[
-        logging.StreamHandler(),
         logging.FileHandler("email_monitor.log", encoding='utf-8') # 确保日志写入文件
     ]
 )

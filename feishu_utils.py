@@ -70,14 +70,17 @@ def send_feishu_msg(subject_tag, raw_subject, sender, recipient, receive_time, c
              "elements": [{"tag": "markdown", "content": email_body.replace("\n", " \n")}]}
         ]
     }
-    r = requests.post(
-        "https://open.feishu.cn/open-apis/im/v1/messages",
-        params={"receive_id_type": "chat_id"},
-        headers=_token_headers(),
-        json={"receive_id": CHAT_ID, "msg_type": "interactive", "content": json.dumps(card, ensure_ascii=False)},
-        timeout=10
-    ).json()
-    return r.get("code") == 0
+    results = []
+    for chat_id in filter(None, [CHAT_ID, CHAT_ID_2]):
+        r = requests.post(
+            "https://open.feishu.cn/open-apis/im/v1/messages",
+            params={"receive_id_type": "chat_id"},
+            headers=_token_headers(),
+            json={"receive_id": chat_id, "msg_type": "interactive", "content": json.dumps(card, ensure_ascii=False)},
+            timeout=10
+        ).json()
+        results.append(r.get("code") == 0)
+    return all(results)
 
 def send_error_alert(error_msg):
     card = {
